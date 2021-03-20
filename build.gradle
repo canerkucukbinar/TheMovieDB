@@ -43,4 +43,7 @@ ext {
 
     // Dependency Injection
     daggerHiltAndroidXVersion = '1.0.0-alpha03'
+
+    // Lifecycle
+    archLifecycleVersion = '2.2.0'
 }
