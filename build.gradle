@@ -34,4 +34,7 @@ ext {
     junitVersion = '4.13.2'
     testExtJunitVersion = '1.1.2'
     espressoVersion = '3.3.0'
+
+    // Navigation
+    navigationVersion = '2.3.4'
 }
