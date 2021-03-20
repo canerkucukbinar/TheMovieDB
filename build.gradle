@@ -46,4 +46,7 @@ ext {
 
     // Lifecycle
     archLifecycleVersion = '2.2.0'
+
+    //Networking
+    retrofitVersion = '2.9.0'
 }
