@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -51,5 +55,11 @@ dependencies {
     /** Navigation */
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    /** Dependency Injection */
+    implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltAndroidXVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$daggerHiltAndroidXVersion"
 
 }
