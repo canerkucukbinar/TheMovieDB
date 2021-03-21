@@ -1,4 +1,4 @@
-package com.ckucukbinar.themoviewdb.model
+package com.ckucukbinar.themoviedb.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -9,8 +9,13 @@ import com.google.gson.annotations.SerializedName
  * @param name TV Show Name
  * @param voteAverage Average of the votes cast.
  * @param imagePath TV Show Poster Path
+ * @param overview Overview
+ * @param first_air_date Date
+ * @param origin_country Country
+ * @param original_name Original Name
+ * @param vote_count Vote Count
  */
-data class TVShowResponse(
+data class TVShow(
     @SerializedName("id")  val id: Int?,
     @SerializedName("name") val name: String?,
     @SerializedName("vote_average") val voteAverage: Double?,
