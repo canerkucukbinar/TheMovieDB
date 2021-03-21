@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ckucukbinar.themoviedb">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".TMDBApplication"
         android:allowBackup="true"
@@ -27,5 +30,7 @@
         </activity>
 
     </application>
+
+
 
 </manifest>
