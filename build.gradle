@@ -49,4 +49,10 @@ ext {
 
     //Networking
     retrofitVersion = '2.9.0'
+
+    //Paging
+    pagingVersion = '3.0.0-beta02'
+
+    //Image
+    glideVersion = '4.11.0'
 }
