@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_detail"
+    app:startDestination="@id/nav_list">
+
+    <fragment
+        android:id="@+id/nav_list"
+        android:name="com.ckucukbinar.themoviedb.view.list.ListFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list" />
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.ckucukbinar.themoviedb.view.detail.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail" />
+
+</navigation>
