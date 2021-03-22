@@ -14,14 +14,14 @@ class PopularTvShowPagingSource(
 ) : PagingSource <Int, TVShow>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TVShow> {
         return try {
-            val positon = params.key ?: FIRST_PAGE_INDEX
-            val response = tmdbService.getPopularTVShowList(positon)
+            val position = params.key ?: FIRST_PAGE_INDEX
+            val response = tmdbService.getPopularTVShowList(TMDBService.Endpoint.apiKey,position) as PopularTVShowResult
             val popularTvShowList = response.results
             popularTvShowList?.let { tvShowList ->
                 LoadResult.Page(
                     data = tvShowList,
-                    prevKey = if(positon == FIRST_PAGE_INDEX) null else positon-1,
-                    nextKey = if(tvShowList.isEmpty()) null else positon+1
+                    prevKey = if(position == FIRST_PAGE_INDEX) null else position-1,
+                    nextKey = if(tvShowList.isEmpty()) null else position+1
                 )
             } ?:run {
                 LoadResult.Error(throw NullPointerException())
