@@ -9,12 +9,20 @@
         android:id="@+id/nav_list"
         android:name="com.ckucukbinar.themoviedb.view.list.ListFragment"
         android:label="List"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_nav_list_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_detail"
         android:name="com.ckucukbinar.themoviedb.view.detail.DetailFragment"
         android:label="Detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="tvShow"
+            app:argType="com.ckucukbinar.themoviedb.model.TVShow" />
+    </fragment>
 
 </navigation>
