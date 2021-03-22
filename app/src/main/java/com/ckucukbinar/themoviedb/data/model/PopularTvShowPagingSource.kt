@@ -15,7 +15,7 @@ class PopularTvShowPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, TVShow> {
         return try {
             val position = params.key ?: FIRST_PAGE_INDEX
-            val response = tmdbService.getPopularTVShowList(TMDBService.Endpoint.apiKey,position) as PopularTVShowResult
+            val response = tmdbService.getPopularTVShowList(TMDBService.Endpoint.apiKey,position, "tr-TR")
             val popularTvShowList = response.results
             popularTvShowList?.let { tvShowList ->
                 LoadResult.Page(
