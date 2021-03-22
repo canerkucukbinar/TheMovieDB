@@ -17,6 +17,7 @@
         style="@style/TitleTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_component_1x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_poster"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +27,7 @@
         style="@style/RatingTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_component_1x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_poster"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
