@@ -55,4 +55,8 @@ ext {
 
     //Image
     glideVersion = '4.11.0'
+
+    //Jmustace
+    jmustacheVersion = "1.15"
+
 }
