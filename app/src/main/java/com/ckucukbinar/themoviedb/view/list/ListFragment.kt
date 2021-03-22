@@ -15,7 +15,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     private val viewModel by viewModels<ListViewModel>()
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private var adapter: PopularTVShowListAdapter? = null
+    private lateinit var adapter: PopularTVShowListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,6 +29,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
 
     private fun initView() {
+        adapter = PopularTVShowListAdapter()
         binding.apply {
             rvList.apply {
                 setHasFixedSize(true)
