@@ -1,4 +1,6 @@
-package com.ckucukbinar.themoviedb.model
+package com.ckucukbinar.themoviedb.data.model
+
+import com.ckucukbinar.themoviedb.model.TVShow
 
 /**
  * TVShow Response
