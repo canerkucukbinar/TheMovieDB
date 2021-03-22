@@ -1,6 +1,8 @@
 package com.ckucukbinar.themoviedb.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 
 /**
@@ -15,6 +17,8 @@ import com.google.gson.annotations.SerializedName
  * @param original_name Original Name
  * @param vote_count Vote Count
  */
+
+@Parcelize
 data class TVShow(
     @SerializedName("id")  val id: Int?,
     @SerializedName("name") val name: String?,
@@ -26,4 +30,4 @@ data class TVShow(
     @SerializedName("original_language") val originalLanguage: String?,
     @SerializedName("original_name") val originalName: String?,
     @SerializedName("vote_count") val voteCount: Int?,
-)
+) : Parcelable
