@@ -14,29 +14,53 @@ import com.ckucukbinar.themoviedb.databinding.ItemTvshowBinding
 import com.ckucukbinar.themoviedb.extension.withMustache
 import com.ckucukbinar.themoviedb.model.TVShow
 
-class PopularTVShowListAdapter : PagingDataAdapter<TVShow, PopularTVShowListAdapter.TVShowViewHolder>(
-    COMPARATOR) {
-    inner class TVShowViewHolder(private val binding: ItemTvshowBinding)
-        : RecyclerView.ViewHolder(binding.root){
-            fun bind(tvShow: TVShow){
-                with(binding){
-                    val imageURL = "${TMDBService.Endpoint.imageURLPrefix}${tvShow.imagePath}"
-                    Glide.with(itemView).load(imageURL)
-                        .fitCenter()
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .error(R.drawable.ic_launcher_foreground)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(ivPoster)
-                    tvTitle.apply {
-                        text = tvShow.name
-                    }
+class PopularTVShowListAdapter(private val listener: OnItemClickListener) :
+    PagingDataAdapter<TVShow, PopularTVShowListAdapter.TVShowViewHolder>(
+        COMPARATOR
+    ) {
 
-                    tvRating.apply {
-                        text = context.resources.getString(R.string.rating).withMustache("rating", tvShow.voteAverage.toString())
+    interface OnItemClickListener {
+        fun onItemClick(tvShow: TVShow)
+    }
+
+    inner class TVShowViewHolder(private val binding: ItemTvshowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.apply {
+                root.apply {
+                    setOnClickListener {
+                        val position = bindingAdapterPosition
+                        if(position != RecyclerView.NO_POSITION){
+                            getItem(position)?.let { tvShow ->
+                                listener.onItemClick(tvShow)
+                            }
+                        }
                     }
                 }
             }
         }
+
+        fun bind(tvShow: TVShow) {
+            with(binding) {
+                val imageURL = "${TMDBService.Endpoint.imageURLPrefix}${tvShow.imagePath}"
+                Glide.with(itemView).load(imageURL)
+                    .fitCenter()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.drawable.ic_launcher_foreground)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(ivPoster)
+                tvTitle.apply {
+                    text = tvShow.name
+                }
+
+                tvRating.apply {
+                    text = context.resources.getString(R.string.rating)
+                        .withMustache("rating", tvShow.voteAverage.toString())
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TVShowViewHolder {
         val binding = ItemTvshowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -50,8 +74,8 @@ class PopularTVShowListAdapter : PagingDataAdapter<TVShow, PopularTVShowListAdap
         }
     }
 
-    companion object{
-        private val COMPARATOR = object: DiffUtil.ItemCallback<TVShow>(){
+    companion object {
+        private val COMPARATOR = object : DiffUtil.ItemCallback<TVShow>() {
             override fun areItemsTheSame(oldItem: TVShow, newItem: TVShow): Boolean {
                 return oldItem.id == newItem.id
             }
