@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TitleTextViewStyle">
+        <item name="android:textSize">@dimen/font_size_18</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/spacing_component_1x</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_component_1x</item>
+    </style>
+
+
+    <style name="RatingTextViewStyle">
+        <item name="android:textSize">@dimen/font_size_14</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/spacing_component_1x</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_component_1x</item>
+    </style>
+
+    <style name="OverviewTextViewStyle">
+        <item name="android:textSize">@dimen/font_size_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/spacing_component_3x</item>
+    </style>
+</resources>
