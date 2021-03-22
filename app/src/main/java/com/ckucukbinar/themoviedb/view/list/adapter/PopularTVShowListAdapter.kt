@@ -6,10 +6,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.ckucukbinar.themoviedb.R
 import com.ckucukbinar.themoviedb.data.service.TMDBService
 import com.ckucukbinar.themoviedb.databinding.ItemTvshowBinding
+import com.ckucukbinar.themoviedb.extension.withMustache
 import com.ckucukbinar.themoviedb.model.TVShow
 
 class PopularTVShowListAdapter : PagingDataAdapter<TVShow, PopularTVShowListAdapter.TVShowViewHolder>(
@@ -20,16 +22,17 @@ class PopularTVShowListAdapter : PagingDataAdapter<TVShow, PopularTVShowListAdap
                 with(binding){
                     val imageURL = "${TMDBService.Endpoint.imageURLPrefix}${tvShow.imagePath}"
                     Glide.with(itemView).load(imageURL)
-                        .centerCrop()
+                        .fitCenter()
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .error(R.drawable.ic_launcher_foreground)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(ivPoster)
                     tvTitle.apply {
                         text = tvShow.name
                     }
 
                     tvRating.apply {
-                        text = tvShow.voteAverage.toString()
+                        text = context.resources.getString(R.string.rating).withMustache("rating", tvShow.voteAverage.toString())
                     }
                 }
             }
